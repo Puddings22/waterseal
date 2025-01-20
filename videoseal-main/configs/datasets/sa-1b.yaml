@@ -1,4 +1,4 @@
-train_dir: /path/to/sa-1b/anonymized_resized/train
-val_dir: /path/to/sa-1b/anonymized_resized/valid/
-train_annotation_file: null
-val_annotation_file: null
+train_dir: /content/sa-1b/train
+val_dir: /content/sa-1b/validate
+train_annotation_file: /content/sa-1b/annotations/instances_train2017.json
+val_annotation_file: /content/sa-1b/annotations/instances_val2017.json
