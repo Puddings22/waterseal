@@ -1,0 +1,17 @@
+.DS_Store
+__pycache__
+output
+outputs
+core
+core*
+*egg-info
+*.pth
+*.pt
+ckpts/
+
+
+fb_expes/*
+fb_notebooks/*
+*/fb_demo/*
+# Track videos in test directories
+!**/tests/**/*.mp4
