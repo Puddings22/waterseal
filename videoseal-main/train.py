@@ -89,7 +89,7 @@ def get_parser():
        help="Number of augmentations to apply")
 
     group = parser.add_argument_group('Image and watermark parameters')
-    aa("--nbits", type=int, default=64,
+    aa("--nbits", type=int, default=384,
        help="Number of bits used to generate the message. If 0, no message is used.")
     aa("--img_size", type=int, default=256,
        help="Size of the input images for data preprocessing, at inference time the images are resized to this size")

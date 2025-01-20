@@ -12,10 +12,9 @@ hidden:
 
 unet_very_tiny:
   msg_processor:
-nbits: 64
-hidden_size: 128     # nbits * 2
-msg_processor_type: 'binary+concat'
-
+    nbits: 384
+    hidden_size: 768     # nbits * 2
+    msg_processor_type: 'binary+concat'
   unet:
     in_channels: 3
     out_channels: 3
@@ -28,10 +27,9 @@ msg_processor_type: 'binary+concat'
 
 unet_very_tiny_bw:
   msg_processor:
-nbits: 64
-hidden_size: 128     # nbits * 2
-msg_processor_type: 'binary+concat'
-
+    nbits: 384
+    hidden_size: 768     # nbits * 2
+    msg_processor_type: 'binary+concat'
   unet:
     in_channels: 3
     out_channels: 1
@@ -45,10 +43,9 @@ msg_processor_type: 'binary+concat'
 
 unet_small_notanh:
   msg_processor:
-nbits: 64
-hidden_size: 128     # nbits * 2
-msg_processor_type: 'binary+concat'
-
+    nbits: 384
+    hidden_size: 768     # nbits * 2
+    msg_processor_type: 'binary+concat'
   unet:
     in_channels: 3
     out_channels: 3
@@ -61,8 +58,8 @@ msg_processor_type: 'binary+concat'
 
 unet:
   msg_processor:
-nbits: 64
-hidden_size: 128     # nbits * 2
+nbits: 384
+hidden_size: 768     # nbits * 2
 msg_processor_type: 'binary+concat'
 
   unet:
@@ -77,8 +74,8 @@ msg_processor_type: 'binary+concat'
 
 unet_small2:
   msg_processor:
-nbits: 64
-hidden_size: 128     # nbits * 2
+nbits: 384
+hidden_size: 768     # nbits * 2
 msg_processor_type: 'binary+concat'
 
   unet:
@@ -93,8 +90,8 @@ msg_processor_type: 'binary+concat'
   
 unet_small2_yuv:
   msg_processor:
-nbits: 64
-hidden_size: 128     # nbits * 2
+nbits: 384
+hidden_size: 768     # nbits * 2
 msg_processor_type: 'binary+concat'
 
   unet:
@@ -109,8 +106,8 @@ msg_processor_type: 'binary+concat'
   
 unet_small2_yuv_idinit:
   msg_processor:
-nbits: 64
-hidden_size: 128     # nbits * 2
+nbits: 384
+hidden_size: 768     # nbits * 2
 msg_processor_type: 'binary+concat'
 
   unet:
@@ -126,8 +123,8 @@ msg_processor_type: 'binary+concat'
 
 unet_small2_bw:
   msg_processor:
-nbits: 64
-hidden_size: 128     # nbits * 2
+nbits: 384
+hidden_size: 768     # nbits * 2
 msg_processor_type: 'binary+concat'
 
   unet:
@@ -142,8 +139,8 @@ msg_processor_type: 'binary+concat'
 
 unet_bw:
   msg_processor:
-nbits: 64
-hidden_size: 128     # nbits * 2
+nbits: 384
+hidden_size: 768     # nbits * 2
 msg_processor_type: 'binary+concat'
 
   unet:
@@ -158,8 +155,8 @@ msg_processor_type: 'binary+concat'
 
 unet_notanh:
   msg_processor:
-nbits: 64
-hidden_size: 128     # nbits * 2
+nbits: 384
+hidden_size: 768     # nbits * 2
 msg_processor_type: 'binary+concat'
 
   unet:
@@ -174,8 +171,8 @@ msg_processor_type: 'binary+concat'
   
 unet_big:
   msg_processor:
-nbits: 64
-hidden_size: 128     # nbits * 2
+nbits: 384
+hidden_size: 768     # nbits * 2
 msg_processor_type: 'binary+concat'
 
   unet:
@@ -189,8 +186,8 @@ msg_processor_type: 'binary+concat'
 
 vae_tiny:
   msg_processor:
-nbits: 64
-hidden_size: 128     # nbits * 2
+nbits: 384
+hidden_size: 768     # nbits * 2
 msg_processor_type: 'binary+concat'
 
   encoder:
@@ -218,8 +215,8 @@ msg_processor_type: 'binary+concat'
 
 vae_tiny_yuv:
   msg_processor:
-nbits: 64
-hidden_size: 128     # nbits * 2
+nbits: 384
+hidden_size: 768     # nbits * 2
 msg_processor_type: 'binary+concat'
 
   encoder:
@@ -246,8 +243,8 @@ msg_processor_type: 'binary+concat'
 
 vae_small:
   msg_processor:
-nbits: 64
-hidden_size: 128     # nbits * 2
+nbits: 384
+hidden_size: 768     # nbits * 2
 msg_processor_type: 'binary+concat'
 
   encoder:
@@ -275,8 +272,8 @@ msg_processor_type: 'binary+concat'
 
 vae_small_yuv:
   msg_processor:
-nbits: 64
-hidden_size: 128     # nbits * 2
+nbits: 384
+hidden_size: 768     # nbits * 2
 msg_processor_type: 'binary+concat'
 
   encoder:
@@ -303,8 +300,8 @@ msg_processor_type: 'binary+concat'
 
 vae_small_bw:
   msg_processor:
-nbits: 64
-hidden_size: 128     # nbits * 2
+nbits: 384
+hidden_size: 768     # nbits * 2
 msg_processor_type: 'binary+concat'
 
   encoder:
@@ -331,8 +328,8 @@ msg_processor_type: 'binary+concat'
 
 vae_big:
   msg_processor:
-nbits: 64
-hidden_size: 128     # nbits * 2
+nbits: 384
+hidden_size: 768     # nbits * 2
 msg_processor_type: 'binary+concat'
 
   encoder:

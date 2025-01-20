@@ -51,7 +51,7 @@ sam_tiny:
     pixelwise: False  # return msg per pixel (k h w)
     upscale_stages: [1]  # 4*2*2 = x16 (patch size)
     embed_dim: 192  # = encoder.out_chans
-    nbits: 64
+    nbits: 384
     sigmoid_output: False
     upscale_type: 'bilinear'  # 'pixelshuffle', 'nearest', 'conv',  'bilinear'
 
@@ -72,7 +72,7 @@ sam_tiny_pw:
     pixelwise: True  # return msg per pixel (k h w)
     upscale_stages: [4, 2, 2]  # 4*2*2 = x16 (patch size)
     embed_dim: 192  # = encoder.out_chans
-    nbits: 64
+    nbits: 384
     sigmoid_output: False
     upscale_type: 'bilinear'  # 'pixelshuffle', 'nearest', 'conv',  'bilinear'
 
@@ -93,7 +93,7 @@ sam_small:
     pixelwise: False  # return msg per pixel (k h w)
     upscale_stages: [1]  # 4*2*2 = x16 (patch size)
     embed_dim: 384  # = encoder.out_chans
-    nbits: 64
+    nbits: 384
     sigmoid_output: False
     upscale_type: 'bilinear'  # 'pixelshuffle', 'nearest', 'conv',  'bilinear'
 
@@ -114,7 +114,7 @@ sam_small_pw:
     pixelwise: True  # return msg per pixel (k h w)
     upscale_stages: [4, 2, 2]  # 4*2*2 = x16 (patch size)
     embed_dim: 384  # = encoder.out_chans
-    nbits: 64
+    nbits: 384
     sigmoid_output: False
     upscale_type: 'bilinear'  # 'pixelshuffle', 'nearest', 'conv',  'bilinear'
 
@@ -135,7 +135,7 @@ sam_base:
   pixel_decoder:
     upscale_stages: [4, 2, 2]  # 4*2*2 = x16 (patch size)
     embed_dim: 768  # = encoder.out_chans
-    nbits: 64
+    nbits: 384
     sigmoid_output: False
     upscale_type: 'bilinear'  # 'pixelshuffle', 'nearest', 'conv',  'bilinear'
 
@@ -155,7 +155,7 @@ sam_small_conv:
   pixel_decoder:
     upscale_stages: [4, 2, 2]  # 4*2*2 = x16 (patch size)
     embed_dim: 192  # = encoder.out_chans
-    nbits: 64
+    nbits: 384
     sigmoid_output: False
     upscale_type: 'conv' 
 
@@ -175,7 +175,7 @@ sam_small_unshuffle:
   pixel_decoder:
     upscale_stages: [4, 2, 2]  # 4*2*2 = x16 (patch size)
     embed_dim: 192  # = encoder.out_chans
-    nbits: 64
+    nbits: 384
     sigmoid_output: False
     upscale_type: 'pixelshuffle'
 
@@ -195,7 +195,7 @@ sam_small_nearest:
   pixel_decoder:
     upscale_stages: [4, 2, 2]  # 4*2*2 = x16 (patch size)
     embed_dim: 192  # = encoder.out_chans
-    nbits: 64
+    nbits: 384
     sigmoid_output: False
     upscale_type: 'nearest'  
 
@@ -206,7 +206,7 @@ convnext:
   pixel_decoder:
     upscale_stages: [4, 4, 2]  # 4*2*2 = x16 (patch size)
     embed_dim: 320  # = encoder.out_chans
-    nbits: 64
+    nbits: 384
     sigmoid_output: False
     upscale_type: 'bilinear'
 
@@ -217,7 +217,7 @@ convnext_femto:
   pixel_decoder:
     upscale_stages: [4, 4, 2]  # 4*2*2 = x16 (patch size)
     embed_dim: 384  # = encoder.out_chans
-    nbits: 64
+    nbits: 384
     sigmoid_output: False
 
 convnext_pico:
@@ -227,7 +227,7 @@ convnext_pico:
   pixel_decoder:
     upscale_stages: [4, 4, 2]  # 4*2*2 = x16 (patch size)
     embed_dim: 512  # = encoder.out_chans
-    nbits: 64
+    nbits: 384
     sigmoid_output: False
 
 convnext_nano:
@@ -237,7 +237,7 @@ convnext_nano:
   pixel_decoder:
     upscale_stages: [4, 4, 2]  # 4*2*2 = x16 (patch size)
     embed_dim: 640  # = encoder.out_chans
-    nbits: 64
+    nbits: 384
     sigmoid_output: False
 
 convnext_tiny:
@@ -247,5 +247,5 @@ convnext_tiny:
   pixel_decoder:
     upscale_stages: [4, 4, 2]  # 4*2*2 = x16 (patch size)
     embed_dim: 768  # = encoder.out_chans
-    nbits: 64
+    nbits: 384
     sigmoid_output: False
