@@ -1,7 +1,4 @@
-# Copyright (c) Meta Platforms, Inc. and affiliates.
-# All rights reserved.
-# This source code is licensed under the license found in the
-# LICENSE file in the root directory of this source tree.
+# videoseal/losses/perceptual.py
 
 import torch
 import torch.nn as nn
@@ -36,23 +33,23 @@ def build_loss(loss_name):
     elif loss_name == "jnd2":
         return JNDLoss(loss_type=2)
     elif loss_name == "dists":
-        # See https://github.com/dingkeyan93/DISTS/blob/master/DISTS_pytorch for the weights
+        # Ensure the path to DISTS checkpoint is correct
         return DISTS("/path/to/dists_ckpt.pth").eval()
     elif loss_name == "watson_vgg":
-        # See https://github.com/SteffenCzolbe/PerceptualSimilarity for the weights
+        # Ensure the path to Watson VGG checkpoint is correct
         model = WatsonDistanceVgg(reduction="none")
         ckpt_loss = "/path/to/rgb_watson_vgg_trial0.pth"
         model.load_state_dict(torch.load(ckpt_loss))
         return model
     elif loss_name == "watson_dft":
-        # See https://github.com/SteffenCzolbe/PerceptualSimilarity for the weights
+        # Ensure the path to Watson FFT checkpoint is correct
         model = ColorWrapper(WatsonDistanceFft, (), {"reduction": "none"})
         ckpt_loss = "/path/to/rgb_watson_fft_trial0.pth"
         model.load_state_dict(torch.load(ckpt_loss))
         return model
     else:
         raise ValueError(f"Loss type {loss_name} not supported.")
-    
+
 
 class NoneLoss(nn.Module):
     def forward(self, x, y):
@@ -77,37 +74,37 @@ class PerceptualLoss(nn.Module):
         Create a perceptual loss function from a string.
         Args:
             percep_loss: (str) The perceptual loss string.
-                Example: "lpips", "lpips+mse", "lpips+0.1_mse", ...
+                Example: "lpips", "lpips+mse", "0.1_lpips+0.9_mse", ...
         """
-        # split the string into the different losses
+        # Split the string into the different losses
         parts = percep_loss.split('+')
 
-        # only one loss
-        if len(parts) == 1:
-            loss = parts[0]
-            return build_loss(loss)
-        
-        # several losses
-        self.losses = {}
+        # Initialize losses as an nn.ModuleDict
+        self.losses = nn.ModuleDict()
+
+        # Populate self.losses with all specified losses
         for part in parts:
-            if '_' in part:  # Check if the format is 'weight_loss'
+            if '_' in part:  # Format: 'weight_loss'
                 weight, loss_key = part.split('_')
-            else:
-                weight, loss_key = 1, part
+                weight = float(weight)
+            else:  # Default weight = 1
+                weight, loss_key = 1.0, part
+
+            # Build and add the loss to self.losses
             self.losses[loss_key] = build_loss(loss_key)
         
-        # create the combined loss function
+        # Define the combined loss function
         def combined_loss(x, y):
-            total_loss = 0
+            total_loss = 0.0
             for part in parts:
-                if '_' in part:  # Check if the format is 'weight_loss'
+                if '_' in part:
                     weight, loss_key = part.split('_')
+                    weight = float(weight)
                 else:
-                    weight, loss_key = 1, part
-                weight = float(weight)
+                    weight, loss_key = 1.0, part
                 total_loss += weight * self.losses[loss_key](x, y).mean()
             return total_loss
-        
+
         return combined_loss
 
     def forward(
@@ -119,16 +116,10 @@ class PerceptualLoss(nn.Module):
 
     def to(self, device, *args, **kwargs):
         """
-        Override the to method to move only some of the perceptual loss functions to the device.
-        + the losses are not moved by default since they are in a dict.
+        Override the to method to move all perceptual loss functions to the device.
         """
         super().to(device)
-        activated = []
-        for loss in self.losses.keys():
-            if loss in self.percep_loss:
-                activated.append(loss)
-        for loss in activated:
-            self.losses[loss] = self.losses[loss].to(device)
+        self.losses.to(device)
         return self
 
     def __repr__(self):
